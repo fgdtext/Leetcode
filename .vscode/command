@@ -1,0 +1,19 @@
+g++ .\文件名.cpp -o 文件名.exe -lwsock32
+./文件名.exe
+
+-lwsock32  ::  如果是使用了winsock2.h，同时又是使用gcc/g++编译，在编译时我们应该在编译指令中额外添加-lwsock32指令
+
+方式一
+g++ main.cpp HelloWorld.cpp -o hello  // 多文件一同编译
+
+执行：   ./hello
+方式二
+g++ -c main.c
+g++ -c HelloWorld.c
+g++ main.o HelloWorld.o -o hello
+
+
+单文件编译运行
+
+g++ test.cpp
+./a.exe       // a.exe 是默认编译出的可执行文件。

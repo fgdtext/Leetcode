@@ -1,0 +1,17 @@
+java :  
+     自定义类型或对象类型数组的创建。
+     Solution[] ins = new Solution[10];  
+     LinkedList<Integer>[] lists = new LinkedList[numCourses]
+     注意这里：这里和c++ 创建结构体数组不同，c++中直接初始化结构体空间，为其中值进行默认初始化。
+     而在Java中， 每个对象都被初始化为 null.
+
+
+
+回文串 ： 中心扩散， 动态规划 ， kmp， 字典树(利用对称)   s1+s2  s1是回文串
+
+
+
+     
+
+
+     
