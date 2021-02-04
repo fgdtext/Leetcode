@@ -5,6 +5,41 @@
       "type": "java",
       "name": "CodeLens (Launch) - Self",
       "request": "launch",
+      "mainClass": "Q643.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q480.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q839.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q959.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q803.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
       "mainClass": "Q947.Self",
       "projectName": "leetcode_d735e2be"
    },

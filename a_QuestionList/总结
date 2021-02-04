@@ -10,7 +10,10 @@ java :
 回文串 ： 中心扩散， 动态规划 ， kmp， 字典树(利用对称)   s1+s2  s1是回文串
 
 
-
+Dui  : BaseStruct
+       自己实现 : int[] dui = new int[k] : 大小为K的堆 
+                        int cursize 
+                        每次都在cursize添加，然后向上调整。
      
 
 

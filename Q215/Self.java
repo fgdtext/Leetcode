@@ -183,41 +183,27 @@ class Dui{
         // 在区间随机选择一个元素作为标定点
         if (right > left) {
             int randomIndex = left + 1 + random.nextInt(right - left);
-            swap(nums, left, randomIndex);
+            int temp = nums[left];
+            nums[left] = nums[randomIndex];
+            nums[randomIndex] = temp;
         }
-
         int pivot = nums[left];
 
         // 将等于 pivot 的元素分散到两边
         // [left, lt) <= pivot
         // (rt, right] >= pivot
 
-        int lt = left + 1;
-        int rt = right;
+        int i = left;
+        int j = right;
 
-        while (true) {
-            while (lt <= rt && nums[lt] < pivot) {
-                lt++;
-            }
-            while (lt <= rt && nums[rt] > pivot) {
-                rt--;
-            }
-
-            if (lt > rt) {
-                break;
-            }
-            swap(nums, lt, rt);
-            lt++;
-            rt--;
+        while (i < j) {
+            while (i < j && nums[j] >= pivot) --j;
+            if(i < j)  nums[i] = nums[j];
+            
+            while (i < j && nums[i] <= pivot) ++i;
+            if(i < j)  nums[j] = nums[i];
         }
-
-        swap(nums, left, rt);
-        return rt;
-    }
-
-    private void swap(int[] nums, int index1, int index2) {
-        int temp = nums[index1];
-        nums[index1] = nums[index2];
-        nums[index2] = temp;
+        nums[i] = pivot; 
+        return i;
     }
 }
