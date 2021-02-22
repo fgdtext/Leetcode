@@ -6,14 +6,61 @@ import java.util.List;
 
 public class Self {
     public static void main(String[] args) {
-        String s = "abacbabc";
-        String p = "abc";
-        Solution so = new Solution();
-        so.findAnagrams(s, p);
+        // String s = "abacbabc";
+        // String p = "abc";
+        // Solution so = new Solution();
+        // so.findAnagrams(s, p);
+    }
+}
+/*
+等价于  Q567
+
+*/
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        int len2 = s.length();
+        int len1 = p.length();
+        char[] arr2 = s.toCharArray();
+        char[] arr1 = p.toCharArray();
+        int[] freq = new int[26];
+        int[] f = new int[26];
+        int count = 0;
+        for(int i = 0; i < len1; i++){
+            freq[arr1[i]-'a']++;
+            if(freq[arr1[i]-'a'] == 1) count++;
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        int left = 0, right = 0;
+        int curcount = 0;
+        while(right < len2){
+            int rind = arr2[right]-'a';
+            f[rind]++;
+            if(f[rind] == freq[rind]) curcount++;
+            right++;
+            if(right - left > len1){
+                int lind = arr2[left]-'a';
+                if(f[lind] == freq[lind]) curcount--;
+                f[lind]--;
+                left++;
+            }
+            if(curcount == count) {
+                ans.add(left);
+            }
+        }
+        return ans;
     }
 }
 
-class Solution {
+
+
+
+
+
+
+
+
+
+class Self2 {
     public List<Integer> findAnagrams(String s, String p) {
         if(p.length() > s.length()) return new ArrayList<>();
         int[] frep = new int[26];
