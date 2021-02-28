@@ -2,10 +2,10 @@ package Q978;
 
 public class Self{
     public static void main(String[] args) {
-        Solution so = new Solution();
-        int[] arr = {4,8,12,16};
-        so.maxTurbulenceSize(arr);
-        System.out.println(-1 >>> 31);
+        // Solution so = new Solution();
+        // int[] arr = {4,8,12,16};
+        // so.maxTurbulenceSize(arr);
+        // System.out.println(-1 >>> 31);
     }
 }
 /*

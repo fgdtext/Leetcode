@@ -5,6 +5,13 @@
       "type": "java",
       "name": "CodeLens (Launch) - Self",
       "request": "launch",
+      "mainClass": "Q88.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
       "mainClass": "Q978.Self",
       "projectName": "leetcode_d735e2be"
    },
