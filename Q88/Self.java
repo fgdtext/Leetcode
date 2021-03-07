@@ -2,10 +2,10 @@ package Q88;
 
 public class Self {
     public static void main(String[] args) {
-        Solution so = new Solution();
-        int[] a = new int[1];
-        int[] b = {1};
-        so.merge(a, 0, b, 1);
+        // Solution so = new Solution();
+        // int[] a = new int[1];
+        // int[] b = {1};
+        // so.merge(a, 0, b, 1);
     }
 }
 /*
