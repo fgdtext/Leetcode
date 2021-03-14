@@ -174,7 +174,7 @@ class Solution2 {
                 start1 = i + 1;
                 k = k - (i - start1 + 1);
             }
-            System.out.equals("k::"+k);
+           // System.out.equals("k::"+k);
         }
         return 0 ;
     }

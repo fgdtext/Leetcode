@@ -3,6 +3,62 @@
  "configurations": [
    {
       "type": "java",
+      "name": "CodeLens (Launch) - MyThreadPoolTest",
+      "request": "launch",
+      "mainClass": "QJUC.MyThreadPoolTest",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - ConditionChange",
+      "request": "launch",
+      "mainClass": "QJUC.ConditionChange",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - EarlyNotify",
+      "request": "launch",
+      "mainClass": "QJUC.EarlyNotify",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q331.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - VolatileTest",
+      "request": "launch",
+      "mainClass": "QJUC.VolatileTest",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q227.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q224.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q29.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
       "name": "CodeLens (Launch) - Self",
       "request": "launch",
       "mainClass": "Q395.Self",
