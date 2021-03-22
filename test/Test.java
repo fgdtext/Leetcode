@@ -3,9 +3,12 @@ import java.util.*;
 
 public class Test {
     public static void main(String[] args) {
-        int i = 10;
-        i = ++i;
-        System.out.print(i);
-        ArrayList<Integer> list;
+        Test t = new Test();
+       // int a = 1/0;
+        t.dfs(new StringBuilder());
+    }
+    public void dfs(Object o){
+        Test t = (Test)o;
+
     }
 }

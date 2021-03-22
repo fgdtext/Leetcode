@@ -3,6 +3,48 @@
  "configurations": [
    {
       "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q371.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q162.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q150.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q138.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q92.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q73.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
       "name": "CodeLens (Launch) - MyThreadPoolTest",
       "request": "launch",
       "mainClass": "QJUC.MyThreadPoolTest",
