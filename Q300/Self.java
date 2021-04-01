@@ -50,8 +50,8 @@ class Solution {
         int res = 0;  
         // 对于每一个num 更新tails数组
         for(int num : nums) {
-            // 在tails数组的 0~res之间二分查找 tails[k] > num
-            // 找第一个大于num的位置。
+            // 在tails数组的 0~res之间二分查找 tails[k] >= num
+            // 找第一个大于等于num的位置。
             int i = 0, j = res;   //  若存在则更新位置i ,若不存在，则i == res 更新的就是res 的位置。
             while(i < j) {
                 int m = (i + j) / 2;

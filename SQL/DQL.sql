@@ -42,3 +42,64 @@ FROM employees GROUP BY len_name HAVING c>5;
 
 #连接查询##################################################
 
+#  sql92标准案例
+# 通过  where 关键字来进行连接，并筛选。
+SELECT salary,grade_level
+FROM employees e,job_grades g
+WHERE salary BETWEEN g.`lowest_sal` AND g.`highest_sal`
+AND g.`grade_level`='A';
+
+
+#  sql99标准案例
+#  select 查询列表
+#  from 表1 别名 【连接类型】
+#  join 表2 别名 
+#  on 连接条件
+#  【where 筛选条件】
+#  【group by 分组】
+#  【having 筛选条件】
+#  【order by 排序列表】
+
+    # 分类
+
+    #内连接（★）：inner
+    #外连接
+	    #左外(★):left 【outer】
+	    #右外(★)：right 【outer】
+	    #全外：full【outer】
+    #交叉连接：cross 
+
+
+# 内连接    INNER JOIN   INNER可以省略  选出交集部分。
+
+#案例2.查询名字中包含e的员工名和工种名（添加筛选）
+SELECT last_name,job_title FROM employees e
+ JOIN jobs j ON e.job_id=  j.job_id
+WHERE e.`last_name` LIKE '%e%';
+
+
+#案例5.查询员工名、部门名、工种名，并按部门名降序（添加三表连接）
+
+SELECT last_name,department_name,job_title
+FROM employees e
+INNER JOIN departments d ON e.department_id=d.department_id
+INNER JOIN jobs j ON e.job_id = j.job_id
+ORDER BY department_name DESC;
+
+
+# 非等值连接 
+SELECT salary,grade_level
+FROM employees e
+JOIN job_grades g
+ON e.salary BETWEEN g.lowest_sal AND g.highest_sal;
+
+
+#  自连接
+
+#查询员工的名字、上级的名字
+# 员工的上级在一行中只显示上级id, 而上级也在员工表。所以做自连接。
+SELECT e.last_name,m.last_name
+FROM employees e
+JOIN employees m
+ON e.`manager_id`= m.`employee_id`;
+
