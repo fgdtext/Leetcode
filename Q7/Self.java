@@ -8,12 +8,7 @@ package Q7;
 
 */
 
-public class Self{
-    public static void main(String[] args) {
-        System.out.println((1<<31));
-        System.out.println(0-((1<<31)-1)-1);
-    }
-}
+
 
 
 class Solution {
@@ -34,7 +29,8 @@ class Solution {
 }
 
 /*
-
+214748365
+2147483647
 32位有符号整数，最大2147483647，最小-2147483648；
 
 ans 的该判断是多余的。 因为 10位数时才会溢出，但是10位数的第一位， 
@@ -43,13 +39,20 @@ ans 的该判断是多余的。 因为 10位数时才会溢出，但是10位数�
  (rev == Integer.MAX_VALUE / 10 && pop > 7)
 
 */
-
+public class Self{
+    public static void main(String[] args) {
+        Solution2 so = new Solution2();
+        so.reverse(563847412);
+    }
+}
 class Solution2 {
     public int reverse(int x) {
         int rev = 0;
         while (x != 0) {
             int pop = x % 10;
             x /= 10;
+            // 如果前9位大于MAX_VALUE/10，那么不管第十位是什么，那么一定越界。
+            // 如果钱9位小于等于MAX_VALUE/10，由于第十位只能是1或者2，那么一定小于7，那么一定不越界。
             if (rev > Integer.MAX_VALUE/10 ) return 0;
             if (rev < Integer.MIN_VALUE/10 ) return 0;
             rev = rev * 10 + pop;

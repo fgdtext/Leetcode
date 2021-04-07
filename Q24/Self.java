@@ -18,7 +18,7 @@ class ListNode {
 */
 
 
-  class Se {
+class Se {
     public ListNode swapPairs(ListNode head) {
         if(head == null) return null;
         if(head.next == null) return head;
@@ -37,7 +37,6 @@ class ListNode {
         return ans;
     }
 }
-
 
 
 /*class

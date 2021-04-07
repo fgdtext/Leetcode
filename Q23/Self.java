@@ -26,38 +26,34 @@ class ListNode {
 
   */
 
-  class Solution {
+class Slef3 {
 
     public ListNode mergeKLists(ListNode[] lists) {
         if(lists.length == 0) return null;
         // 小 顶堆
-        PriorityQueue<int[]> q = new PriorityQueue<>(lists.length,(o1,o2)->{return o1[0] - o2[0];});
+        PriorityQueue<ListNode> q = new PriorityQueue<>(lists.length,(o1,o2)->{return o1.val - o2.val;});
         // 初始化堆
         for(int i = 0; i < lists.length; i++)if(lists[i] != null){
 
-            q.offer(new int[]{lists[i].val,i});
+            q.offer(lists[i]);
         }
         if(q.isEmpty()) return null;
         // 找出第一个结点
-        int[] temp = q.poll();
-        ListNode tail = lists[temp[1]];
-        lists[temp[1]] = tail.next;
-        if(tail.next != null){
-            temp[0] = tail.next.val;
+        ListNode temp = q.poll();
+        ListNode tail = temp;
+        temp = tail.next;
+        if(temp != null){
             q.offer(temp);
         }
         ListNode head = tail;
 
         while(!q.isEmpty()){
             // 取出堆顶 a
-            int[] a = q.poll();
-
-            tail.next = lists[a[1]];
+            ListNode a = q.poll();
+            tail.next = a;
             tail = tail.next;
-
-            lists[a[1]] = lists[a[1]].next;
-            if(lists[a[1]] != null){
-                a[0] = lists[a[1]].val;
+            a = a.next;
+            if(a != null){
                 q.offer(a);
             }  
         }

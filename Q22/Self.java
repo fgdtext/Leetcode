@@ -85,6 +85,7 @@ class Solution {
             dfs(str, n-1, m);
             str.deleteCharAt(str.length()-1);
         }
+        // 添加右括号的条件。
         if(n < m){
             str.append(')');
             dfs(str, n, m-1);

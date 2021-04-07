@@ -14,7 +14,7 @@ target 可以 -2 -3 -6 -7 到第一层
 begin 的目的就是 限制 下一层 选择的开始位置。
 
 */
-class Solution2 {
+class Solution22{
 
     private List<List<Integer>> res = new ArrayList<>();
 

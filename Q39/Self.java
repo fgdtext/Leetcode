@@ -6,21 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Self {
 
-    public static void main(String[] args) {
-        Solution solution  = new Solution();
-        int[] arr = {2,3,6,7};
-        List<List<Integer>> ans = solution.combinationSum(arr, 7);
-        for(List<Integer> list : ans){
-            for(int it : list){
-                System.out.print(it+" ");
-            }
-            System.out.println();
-        }
-
-    }
-}
 
 
 
@@ -69,4 +55,52 @@ class Solution {
         }
         dfs(cur+1, add, new ArrayList<>(cur_list));
     }
+}
+public class Self {
+
+    public static void main(String[] args) {
+        Solution2 solution  = new Solution2();
+        int[] arr = {2,3,6,7};
+        List<List<Integer>> ans = solution.combinationSum(arr, 7);
+        for(List<Integer> list : ans){
+            for(int it : list){
+                System.out.print(it+" ");
+            }
+            System.out.println();
+        }
+
+    }
+}
+class Solution2 {
+    int[] candidates;
+    int len;
+    int target;
+    List<List<Integer>> ans;
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        this.candidates = candidates;
+        this.len = candidates.length;
+        this.target = target;
+        ans = new ArrayList<>();
+        dfs(0, 0,new ArrayList<>());
+        return ans;
+    }
+    public void dfs(int cur,int add, List<Integer> cur_list){
+        if(add == target){
+            ans.add(cur_list);
+            return;
+        }
+        if(cur == len) return;
+        if(candidates[cur] > target - add) return;
+        if(add > target) return;
+
+        // 一次性分化出  多种对(不同次数)对 当前cur 的选择， 下次递归时，就不允许再挑选当前值。
+        dfs(cur+1, add, new ArrayList<>(cur_list)); // cur不选
+        int temp = add;
+        while(temp + candidates[cur]<= target){  // cur选多次。
+                temp += candidates[cur];
+                cur_list.add(candidates[cur]);
+                dfs(cur+1, temp, new ArrayList<>(cur_list));
+            }
+        }
 }
