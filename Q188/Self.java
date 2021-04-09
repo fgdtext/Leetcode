@@ -2,6 +2,46 @@ package Q188;
 
 
 import java.util.Arrays;
+
+
+
+
+/*
+
+等价于 Q123 的写法 ： 先去理解Q123，再看这题
+*/
+class Self22 {
+    public int maxProfit(int k, int[] prices) {
+        if (prices.length == 0 || prices.length == 1) {
+            return 0;
+        }
+        int n = prices.length;
+        k = Math.min(k, n / 2);
+        int[] buy = new int[k+1];
+        int[] sell = new int[k+1];
+
+        buy[0] = -prices[0];
+        sell[0] = 0;
+        for (int i = 1; i < k; ++i) {
+            buy[i]  =-prices[0];
+        }
+
+        for (int i = 1; i < n; ++i) {
+            buy[0] = Math.max(buy[0],  - prices[i]);
+            sell[0] = Math.max(sell[0], buy[0] + prices[i]);
+            for (int j = 1; j < k; ++j) {
+                buy[j] = Math.max(buy[j], sell[j - 1] - prices[i]);
+                sell[j] = Math.max(sell[j], buy[j] + prices[i]);   
+            }
+        }
+
+        return k == 0 ? 0 : sell[k-1];
+    }
+}
+
+
+
+
 /*
 
 2
@@ -149,6 +189,10 @@ class Ans {
         return Arrays.stream(sell[n - 1]).max().getAsInt();
     }
 }
+/*
+
+等价于 Q123 的写法
+*/
 /*
 由依赖顺序可知，可以优化到1维度的数组。
 

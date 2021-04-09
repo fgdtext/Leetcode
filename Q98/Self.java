@@ -12,31 +12,29 @@ public class Self {
       TreeNode(int x) { val = x; }
   }
  
-  class Solution {
-    TreeNode pre;
-    TreeNode mark;
+class Solution {
+    int pre;
+    boolean postfirst;
     public boolean isValidBST(TreeNode root) {
         if(root == null) return true;
         if(root.left == null && root.right == null) return true;
-        pre = new TreeNode(Integer.MIN_VALUE);
-        mark = pre;
+        pre = Integer.MIN_VALUE;
+        postfirst = false;
         return dfs(root);
     }
     public boolean dfs(TreeNode cur){
-        if(cur == null) return true;
+        if(cur == null) return true;  //能走到头就说明成功了.
         
         boolean a =  dfs(cur.left);
         if(!a) return false;
         boolean b;
-        if(cur.val == Integer.MIN_VALUE && pre.val == Integer.MIN_VALUE){
-            if(pre == mark) b = true; //  pre 可能还没有 改变。
-            else b = false;
-        }
-        else if(cur.val == Integer.MIN_VALUE) b = false;
-        else if(pre.val == Integer.MIN_VALUE) b = true;
-        else  b = cur.val > pre.val;
+        // 防止中序第一个恰好是最小值.
+        if(!postfirst && cur.val == Integer.MIN_VALUE && pre == Integer.MIN_VALUE){
+             b = true; 
+        }else b = cur.val > pre;
         if(!b) return false;
-        pre = cur;
+        pre = cur.val;
+        postfirst = true;
         boolean c =  dfs(cur.right);
         if(!c) return false;
         return true;

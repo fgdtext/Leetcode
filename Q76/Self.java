@@ -4,15 +4,7 @@ import java.util.HashMap;
 
 
 
-public class Self {
-    public static void main(String[] args) {
-        String s = "ADOBECODEBANC";
-        String t = "ABC";
-        Solution ss = new Solution();
-        String ans = ss.minWindow(s, t);
-        System.out.println(ans);
-    }
-}
+
 /*
 该 最小子串 应有的性质 ：   1.以t中某个 字符开头， 以 t中某个字符 结尾。
 
@@ -78,5 +70,99 @@ class Solution {
             if(stdmap.get(c) > curmap.get(c)) return false;
         }
         return true;
+    }
+}
+public class Self {
+    public static void main(String[] args) {
+        String s = "ab";
+        String t = "b";
+        Solution3 ss = new Solution3();
+        String ans = ss.minWindow(s, t);
+        System.out.println(ans);
+    }
+}
+
+
+class Solution3 {
+    public String minWindow(String s, String t) {
+        int slen = s.length();
+        HashMap<Character,Integer> freq = new HashMap<>();
+        
+        for(char c : t.toCharArray()){
+            if(!freq.containsKey(c)) freq.put(c, 0);
+            freq.replace(c, freq.get(c)+1);
+        }
+        HashMap<Character,Integer> curf = new HashMap<>();
+        for(char c : freq.keySet()){
+            curf.put(c, 0);
+        }
+        int k = 0;
+        int i = 0;
+        for(; i < slen; i++){
+            char c = s.charAt(i);
+            if(curf.containsKey(c)){
+                curf.replace(c, curf.get(c)+1);
+                int kk = freq.get(c);
+                if(curf.get(c) == kk) {
+                    k++;
+                }
+            }
+            if(k == freq.size()) break;
+        }
+        if(k < freq.size()) return "";
+        int ansl = 0, ansr = i+1;
+        int left = 0, right = i+1;
+        //先收缩一次
+        while(true){
+            char cl = s.charAt(left);
+            if(curf.containsKey(cl)){
+                if(curf.get(cl) > freq.get(cl)){
+                    curf.replace(cl, curf.get(cl)-1);
+                }else{
+                    break;
+                }
+            }
+            left++;
+            if(ansr-ansl > right-left) {
+                ansl = left; ansr = right;
+            }
+        }
+        while(right < s.length()){
+            char cr = s.charAt(right);
+            if(curf.containsKey(cr)){
+                curf.replace(cr, curf.get(cr)+1);
+                // 开始收缩窗口
+                while(true){
+                    char cl = s.charAt(left);
+                    if(curf.containsKey(cl)){
+                        if(curf.get(cl) > freq.get(cl)){
+                            curf.replace(cl, curf.get(cl)-1);
+                        }else{
+                            break;
+                        }
+                    }
+                    left++;
+                    if(ansr-ansl > right-left+1){
+                        ansl = left; ansr = right+1;
+                    }
+                }
+            }
+            right++;
+        }
+        while(true){
+            char cl = s.charAt(left);
+            if(curf.containsKey(cl)){
+                if(curf.get(cl) > freq.get(cl)){
+                    curf.replace(cl, curf.get(cl)-1);
+                }else{
+                    break;
+                }
+            }
+            left++;
+            if(ansr-ansl > right-left) {
+                ansl = left; ansr = right;
+            }
+        }
+        return s.substring(ansl,ansr);
     }
 }

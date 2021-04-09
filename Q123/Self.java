@@ -4,15 +4,6 @@ import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.LinkedList;
 
-public class Self{
-    public static void main(String[] args) {
-        Solution so = new Solution();
-        int[] a = {1,2,3};
-        so.maxProfit(a);
-
-        
-    }
-}
 
 /*
 由于我们最多可以完成两笔交易，因此在任意一天结束之后，我们会处于以下五个状态中的一种：
@@ -37,6 +28,15 @@ public class Self{
 
 */
 
+public class Self{
+    public static void main(String[] args) {
+        Solution so = new Solution();
+        int[] a = {1,2,3,4,5};
+        so.maxProfit(a);
+
+        
+    }
+}
 
 class Solution {
     public int maxProfit(int[] prices) {

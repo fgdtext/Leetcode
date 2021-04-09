@@ -37,7 +37,7 @@ public class Self {
 链表的题， 真是麻烦
 
  */
-class Solution {
+class Self2 {
     public ListNode deleteDuplicates(ListNode head) {
         if(head == null || head.next == null) return head;
         //使用空的头结点，来连接新链，和旧链分隔开
@@ -76,3 +76,24 @@ class Solution {
 }
 
 
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode numpy = new ListNode();
+        ListNode pre = numpy;
+        ListNode cur = head;
+        while(cur != null){
+            if(cur.next != null && cur.val == cur.next.val) {
+                int val = cur.val;
+                while(cur != null && cur.val == val){
+                    cur = cur.next;
+                }
+                continue;
+            }
+            pre.next = cur;
+            pre = pre.next;
+            cur = cur.next;
+            pre.next = null; 
+        }
+        return numpy.next;
+    }
+}

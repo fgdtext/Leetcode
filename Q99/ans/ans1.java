@@ -31,9 +31,9 @@ class Solution {
                 root = root.left;
             }
             root = stack.pop();
-            if (pred != null && root.val < pred.val) {
+            if (pred != null && root.val < pred.val) {  // 第一次进来就给x,y赋值, 但是由于没有break, 所以会继续找第二个,y被刷新。
                 y = root;
-                if (x == null) {
+                if (x == null) {   
                     x = pred;
                 } else {
                     break;

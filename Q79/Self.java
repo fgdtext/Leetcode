@@ -24,7 +24,6 @@ public class Self {
 */
 
 class Solution {
-    boolean[][][] dp;
     boolean[][] vis;
     int[][] direct = {{0,1},{1,0},{-1,0},{0,-1}};
     public boolean exist(char[][] board, String word) {
@@ -36,7 +35,6 @@ class Solution {
             }
         }
         vis = new boolean[board.length][board[0].length];
-        dp = new boolean[board.length][board[0].length][word.length()];
         for(int i = 0; i < board.length; i++){
             for(int j = 0; j < board[0].length; j++){
                 if(board[i][j] == word.charAt(0))
@@ -50,11 +48,8 @@ class Solution {
             return true;
         }
         if(vis[i][j]) return false;
+        if(word.charAt(curlen) != board[i][j])  return false;
         vis[i][j] = true;
-        if(word.charAt(curlen) != board[i][j]){
-            vis[i][j] = false;
-            return false;
-        } 
         // 4个 可能的方向
         for(int k = 0; k < 4; k++){
             int new_i = direct[k][0] + i;
