@@ -115,6 +115,17 @@ class Solution3 {
     }
 }
 
+//ans2
+class Solution5 {
+    public int rangeBitwiseAnd(int m, int n) {
+        while (m < n) {
+            // 抹去最右边的 1
+            n = n & (n - 1);
+        }
+        return n;
+    }
+}
+
 public class Self{
     public static void main(String[] args) {
         Solution3 solution3 = new Solution3();

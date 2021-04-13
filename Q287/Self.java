@@ -65,11 +65,11 @@ class Solution {
             fast = nums[nums[fast]];
         }
         fast = 0;
-        while(nums[fast] != nums[slow]){
+        while(fast != slow){
             slow = nums[slow];
             fast = nums[fast];
         }
 
-        return nums[fast];
+        return fast;
     }
 }

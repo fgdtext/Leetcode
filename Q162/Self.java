@@ -71,9 +71,9 @@ class Solution {
         while (l < r) {
             int mid = (l + r) / 2;
             if (nums[mid] > nums[mid + 1])
-                r = mid;
+                r = mid;// mid位置就可能时山峰。在左侧
             else
-                l = mid + 1;
+                l = mid + 1; // mid+1的位置就可能是山峰，在右侧。
         }
         return l;
     }

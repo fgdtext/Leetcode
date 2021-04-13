@@ -1,6 +1,6 @@
 package Q207;
 
-import java.util.LinkedList;
+import java.util.*;
 
 /**
   该算法不好，因为题目只要求判断是否有环。直接bfs,dfs 判断是否有环即可。。 
@@ -64,5 +64,47 @@ public class canFinish {
 
 
 
+    }
+}
+
+class Solution3 {
+    List<List<Integer>> edges;
+    int[] visited;
+    boolean valid = true;
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        edges = new ArrayList<List<Integer>>();
+        for (int i = 0; i < numCourses; ++i) {
+            edges.add(new ArrayList<Integer>());
+        }
+        visited = new int[numCourses];
+        for (int[] info : prerequisites) {
+            edges.get(info[1]).add(info[0]);
+        }
+        for (int i = 0; i < numCourses && valid; ++i) {
+            if (visited[i] == 0) {
+                dfs(i);
+            }
+        }
+        return valid;
+    }
+    /*
+        dfs如何找有向图的环： 
+
+    */
+    public void dfs(int u) {
+        visited[u] = 1;
+        for (int v: edges.get(u)) {
+            if (visited[v] == 0) {
+                dfs(v);
+                if (!valid) {
+                    return;
+                }
+            } else if (visited[v] == 1) {
+                valid = false;
+                return;
+            }
+        }
+        visited[u] = 2;
     }
 }
