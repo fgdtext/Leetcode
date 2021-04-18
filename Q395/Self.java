@@ -10,6 +10,12 @@ import java.util.*;
 每次都统计区间内的字符频率，然后找到非法字符，再进行分割，直到找不到非法字符，那么该子串就是合法的。
 
 */
+public class Self{
+    public static void main(String[] args) {
+        Ans1 ans = new Ans1();
+        ans.longestSubstring("bbaaacbd", 3);
+    }
+}
 class Ans1 {
     public int longestSubstring(String s, int k) {
         int len = s.length();
@@ -28,13 +34,15 @@ class Ans1 {
         }
         if(split == 0) return r-l+1;
         int ret = 0;
-        for(int i = l; i < r; i++){
+        for(int i = l; i <= r; i++){
             if(s.charAt(i) == split){
                 ret = Math.max(ret,dfs(s, l, i-1, k));
                 l = i+1;
                 if(l > r) break;
             }
         }
+        //   对于串bbaaa, 上边会按照b进行分割，分别递归 b,b 然后 l指向第一个a,r指向最后一个a,但是要求aaa的长度，就必须对l之后的串进行递归一次。
+        
         if(s.charAt(r) == split){
             ret = Math.max(ret,dfs(s, l, r-1, k));
         }else{
@@ -44,6 +52,16 @@ class Ans1 {
         return ret;
     }
 }
+/*
+        if(s.charAt(r) == split){
+            ret = Math.max(ret,dfs(s, l, r-1, k));
+        }else{
+            // 虽然当前区间没有 关于 split字符的分割， 但是可能还含有其他字符需要分割的地方。交给递归，唯一的出口就是在子串中找不到split.
+            ret = Math.max(ret,dfs(s, l, r, k)); 
+        }
+        return ret;
+
+*/
 
 
 

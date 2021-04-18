@@ -35,7 +35,7 @@ res += right-left;的解释。
 */
 class Solution {
     public int subarraysWithKDistinct(int[] A, int K) {
-        return mostK(A, K) + mostK(A, K - 1);
+        return mostK(A, K) - mostK(A, K - 1);
     }
     public int mostK(int[] A, int k){
         int len = A.length;

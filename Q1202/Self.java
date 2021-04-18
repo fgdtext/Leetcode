@@ -25,6 +25,12 @@ public class Self{
 
 关于排序: 使用int[26] 对每个集合分配一个 int[26] s
 将集合中的所有下标，统计其字符频率， 那么最后的顺序就是  int[26]的顺序组合。
+        // 这个时间挺快，但是空间利用率比较差。
+        int[][] map = new int[lens][26];
+        for(int i = 0; i < lens; i++){
+            int root = find(i);
+            map[root][s.charAt(i)-'a']++;
+        }
 */
 class Solution {
     int[] ind;
@@ -43,6 +49,8 @@ class Solution {
                 ind[b] = a; // b的父结点是a.
             }
         }
+
+
         // 这个时间挺快，但是空间利用率比较差。
         int[][] map = new int[lens][26];
         for(int i = 0; i < lens; i++){

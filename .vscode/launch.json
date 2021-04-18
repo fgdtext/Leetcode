@@ -5,6 +5,27 @@
       "type": "java",
       "name": "CodeLens (Launch) - Self",
       "request": "launch",
+      "mainClass": "Q1024.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q697.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
+      "mainClass": "Q581.Self",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Self",
+      "request": "launch",
       "mainClass": "Q60.Self",
       "projectName": "leetcode_d735e2be"
    },

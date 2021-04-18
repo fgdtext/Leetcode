@@ -118,8 +118,8 @@ ad分别是c的两个子节点。
 
 class Ans1 {
 
-    HashMap<String,String> p;  // p[x] 记录节点 x 的祖先节点
-    HashMap<String,Double> d;  //d[x] 记录节点 x 到祖先节点的距离（即 x / root）
+    HashMap<String,String> p;  // p[x] 记录节点 x 的父节点
+    HashMap<String,Double> d;  //d[x] 记录节点 x 到父节点的距离（即 x / y）
     String find(String x){  // 找到结点 x的祖先结点。
         if(p.get(x) != x){
             String t = find(p.get(x));

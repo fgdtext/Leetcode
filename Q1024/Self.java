@@ -123,7 +123,12 @@ maxn[i]  的思想 类似 与 数组的  前缀和，   都属于  当先已经�
 
 */
 
-
+public class Self{
+    public static void main(String[] args) {
+        Ans a = new Ans();
+        a.videoStitching(new int[][]{{0,2}}, 2);
+    }
+}
 
 class Ans {
     public int videoStitching(int[][] clips, int T) {

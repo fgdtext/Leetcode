@@ -20,7 +20,7 @@ public class Self {
 每次我们都把栈顶当作3.  
 
 */
-class Solution {
+class Solution2 {
     public boolean find132pattern(int[] nums) {
         int len = nums.length;
         if(len < 3) return false;
@@ -38,3 +38,4 @@ class Solution {
         return false;
     }
 }
+

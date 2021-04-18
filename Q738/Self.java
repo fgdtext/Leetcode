@@ -122,6 +122,7 @@ class Solution {
         while (i < strN.length && strN[i - 1] <= strN[i]) {
             i += 1;
         }
+        
         if (i < strN.length) {
             // 从山峰开始向左削掉山峰，取得第一个小的位置，
             while (i > 0 && strN[i - 1] > strN[i]) {

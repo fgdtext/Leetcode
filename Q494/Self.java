@@ -3,11 +3,11 @@ package Q494;
 
 
 public class Self {
-    public static void main(String[] args) {
-        Ans so = new Ans();
-        int[] a = {9,7,0,3,9,8,6,5,7,6};
-        so.findTargetSumWays(a, 2);
-    }
+    // public static void main(String[] args) {
+    //     Ans so = new Ans();
+    //     int[] a = {9,7,0,3,9,8,6,5,7,6};
+    //     so.findTargetSumWays(a, 2);
+    // }
 }
 /*
 下边是错误的示例，没有什么用。 时间复杂度 > 2^n
@@ -132,7 +132,9 @@ class Self4 {
 
 
 
+class Ans5 {
 
+}
 
 
 
@@ -144,24 +146,7 @@ class Self4 {
 
    */
 
-   class Ans {
-    public int findTargetSumWays(int[] nums, int S) {
-        int[] dp = new int[2001];
-        dp[nums[0] + 1000] = 1;
-        dp[-nums[0] + 1000] += 1;
-        for (int i = 1; i < nums.length; i++) {
-            int[] next = new int[2001];
-            for (int sum = -1000; sum <= 1000; sum++) {
-                if (dp[sum + 1000] > 0) {
-                    next[sum + nums[i] + 1000] += dp[sum + 1000];
-                    next[sum - nums[i] + 1000] += dp[sum + 1000];
-                }
-            }
-            dp = next;
-        }
-        return S > 1000 ? 0 : dp[S + 1000];
-    }
-}
+
 
 
 /*class

@@ -40,7 +40,7 @@ class Solution {
         }
         top -= k;  // 考虑可能连续相等，造成找出的山峰不够数的情况。
         StringBuilder ans = new StringBuilder();
-        boolean flag = false;
+        boolean flag = false;  //避免输出前导0
         for(int i = 0; i <= top; i++){
             if(stack[i] != '0') flag = true;
             if(flag){

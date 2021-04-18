@@ -23,26 +23,26 @@ right 总是要右移， left 总是有条件移动。所以窗口的变化只�
 假设输入  ： AABCABBB  k = 2
  L
  R
- AABCABBB  maxn = 1 满足right - left + 1 - maxn > k 可以扩大窗口
+ AABCABBB  maxn = 1  不满足right - left + 1 - maxn > k 可以扩大窗口
  LR
- AABCABBB  maxn = 2 满足right - left + 1 - maxn > k 可以扩大窗口
+ AABCABBB  maxn = 2  不满足right - left + 1 - maxn > k 可以扩大窗口
  L R
- AABCABBB  maxn = 2 满足right - left + 1 - maxn > k 可以扩大窗口
+ AABCABBB  maxn = 2  不满足right - left + 1 - maxn > k 可以扩大窗口
  L  R
- AABCABBB  maxn = 2 满足right - left + 1 - maxn > k 可以扩大窗口
+ AABCABBB  maxn = 2  不满足right - left + 1 - maxn > k 可以扩大窗口
  L   R
- AABCABBB  maxn = 3 满足right - left + 1 - maxn > k 可以扩大窗口  
+ AABCABBB  maxn = 3  不满足right - left + 1 - maxn > k 可以扩大窗口  
  L    R
- AABCABBB  maxn = 3  不满足right - left + 1 - maxn > k 只能滑动窗口。大小不变。
+ AABCABBB  maxn = 3  满足right - left + 1 - maxn > k 只能滑动窗口。大小不变。
 
  因为窗口是递增的， 要想窗口可以继续扩大，那么只能是maxn先扩大。maxn也是单增的。
  窗口滑动时，大小不变，那么滑动之后的窗口必然不需要计算，因为同样大小的窗口已经出现了，ans = right-left
  滑动时 ans 不会继续扩大。
 
   L    R
- AABCABBB  maxn = 3  不满足right - left + 1 - maxn > k 只能滑动窗口。大小不变。
+ AABCABBB  maxn = 3  满足right - left + 1 - maxn > k 只能滑动窗口。大小不变。
    L    R
- AABCABBB  maxn = 4  满足right - left + 1 - maxn > k 可以扩大窗口
+ AABCABBB  maxn = 4  不满足right - left + 1 - maxn > k 可以扩大窗口
 
    L     R
  AABCABBB  

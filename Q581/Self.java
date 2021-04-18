@@ -1,9 +1,8 @@
 package Q581;
 
+import java.util.LinkedList;
 
-public class Self {
-    
-}
+
 /*
 子数组的要求：  子数组的最小值大于左侧数组的最大值，子数组的最大值小于右侧数组的最小值，左侧数组有序，右侧数组有序。
 这个算法背后的思想是  *无序*  *子数组*   中  最小元素  的正确位置可以决定左边界，最大元素的正确位置可以决定右边界。
@@ -14,7 +13,7 @@ public class Self {
     4. indright-1 -> indleft+1 就是要找的 最短无序连续子数组
 
 */
-class Solution {
+class Solution3 {
     public int findUnsortedSubarray(int[] nums) {
         int left = 0;
         while(left+1 < nums.length && nums[left] <= nums[left+1]) left++;
@@ -35,5 +34,37 @@ class Solution {
         while(indleft <= left && nums[indleft] <= minval) indleft++;
         while(indright >= right && nums[indright] >= maxval) indright--;
         return indright < indleft ? 0 : indright - indleft+1;
+    }
+}
+
+public class Self{
+    public static void main(String[] args) {
+        Solution so = new Solution();
+        int[] a = {1,3,2,2,2};
+        so.findUnsortedSubarray(a);
+    }
+}
+
+class Solution {
+    public int findUnsortedSubarray(int[] nums) {
+        int len = nums.length;
+        LinkedList<Integer> stack = new LinkedList<>();
+        int minind = len;
+        for(int i = 0; i < len; i++){
+            while(!stack.isEmpty() && nums[stack.peek()] > nums[i]){
+                minind = Math.min(minind, stack.pop());
+            }
+            stack.push(i);
+        }
+        stack.clear();
+        int maxind = -1;
+        for(int i = len-1; i >= 0; i--){
+            while(!stack.isEmpty() && nums[stack.peek()] < nums[i]){
+                maxind = Math.max(maxind, stack.pop());
+            }
+            stack.push(i);
+        }
+        if(minind == len) return 0;
+        return maxind - minind + 1;
     }
 }

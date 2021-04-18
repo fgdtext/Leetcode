@@ -2,7 +2,9 @@ package Q1356;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class Self {
@@ -27,33 +29,32 @@ public class Self {
 
 class Solution {
     public int[] sortByBits(int[] arr) {
-        HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-        for(int e : arr){
-            int count = count(e);
-            if(!map.containsKey(count)){
-                map.put(count, new ArrayList<>());
-            }
-            map.get(count).add(e);
+        int[][] temp = new int[arr.length][2];
+        for (int i = 0; i < arr.length; i++) {
+            temp[i][0] = arr[i];
+            temp[i][1] = hammingWeight(arr[i]);
         }
-        int cur = 0;
-        for(int i = 0; i <= 31; i++){
-            ArrayList<Integer> list = map.get(i);
-            if(list == null) continue;
-            Collections.sort(list);
-            for(int e : list){
-                arr[cur++] = e;
+        Arrays.sort(temp,new Comparator<int[]>(){
+            public int compare(int[] o1, int[] o2){
+                if(o1[1] == o2[1]){
+                    return o1[0] - o2[0];
+                }
+               return o1[1] - o2[1];
             }
+        });
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = temp[i][0];
         }
         return arr;
     }
-    // 对 0 - 30 位计数
-    public int count(int num){
-        int conut = 0;
-        int k = 1;
-        for(int i = 0; i < 31; i++){
-            if((num&k) != 0) conut++;
-            k*=2;
+   
+   
+    public int hammingWeight(int n) {
+        int count = 0;
+        while (n != 0) {
+            n &= n - 1;
+            count++;
         }
-        return conut;
+        return count;
     }
 }

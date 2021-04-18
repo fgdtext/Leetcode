@@ -19,7 +19,7 @@ public class Self {
 
 
  */
-class Solution {
+class Solution3 {
     public int pathSum(TreeNode root, int sum) {
         // key是前缀和, value是大小为key的前缀和出现的次数
         Map<Integer, Integer> prefixSumCount = new HashMap<>();
@@ -68,3 +68,4 @@ class Solution {
         return res;
     }
 }
+
