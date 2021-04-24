@@ -172,3 +172,27 @@
 
                 对于 1111   111：7  (7*2 + 1)%5 = (7*2%5 + 1)%5 = (7%5*2 + 1)%5
                 
+**判断x是否是素数**
+                **对6求余数，余数为 1或5的才可能是素数**
+                 //见过比较经典的思路
+                private static boolean isP(int num) {
+                        if(num <= 3) {
+                             return num > 1;    // 2,3都是素数
+                        }
+                        //6*n+2;6*n+3;6*n+4;6*n等都不是素数;可过滤掉2/3的判断
+                        if(num % 6 != 1 && num % 6 !=5) {
+                              return false;
+                        }
+                        
+                        double sqrt = Math.sqrt(num);
+                        // 只对 6的 倍数 -1 的位置进行判断。
+                        for (int i = 5; i < sqrt; i += 6) {
+                                //只变量2类数据num % 6 == 1 num % 6 == 5
+                                if (num % i == 0 || num % (i + 2) == 0) {
+                                        return false;
+                                }
+                        }
+                        return true;
+                }
+
+
