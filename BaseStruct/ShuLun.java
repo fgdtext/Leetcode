@@ -1,3 +1,4 @@
+package BaseStruct;
 import java.util.*;
 
 public class ShuLun{
