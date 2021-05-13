@@ -1,14 +1,15 @@
 package test;
 import java.util.*;
-
-public class Test {
+public class Test{
     public static void main(String[] args) {
-        Test t = new Test();
-       // int a = 1/0;
-        t.dfs(new StringBuilder());
+        Solution so = new Solution();
+        so.GetUglyNumber_Solution(8);
     }
-    public void dfs(Object o){
-        Test t = (Test)o;
-
+}
+ class Solution {
+  
+    public int GetUglyNumber_Solution(int index) {
+        int k = 1;
+        return 0;
     }
 }
