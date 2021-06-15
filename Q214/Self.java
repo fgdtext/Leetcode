@@ -53,6 +53,7 @@ class Solution {
     }
    // 该 next数组的特点是没有 加 1;
    // next 从 -1开始
+   // 四个 -1 , 两个 0
     void getNext(String str, int[] next){
         int i = 0, j = -1; // j = -1 是特殊位置
         next[0] = -1;

@@ -52,7 +52,7 @@ class Solution {
     public int dfs(int i){
         if(dp[i] != 0) return dp[i];
         int sum = 0;
-        // 根的划分。
+        // 根的划分。1...n，没有0
         for(int j = 1; j <= i/2; j++){
             sum = sum + dfs(j-1) * dfs(i - j);
         }

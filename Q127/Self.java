@@ -127,7 +127,9 @@ class Solution {
             char tmp = array[i];
             array[i] = '*';
             String newWord = new String(array);
+            // 此处可能不会添加结点。如果已经存在则不添加。
             addWord(newWord);
+            // id2 就是 newWord的序号
             int id2 = wordId.get(newWord);
             edge.get(id1).add(id2);
             edge.get(id2).add(id1);
