@@ -1,6 +1,49 @@
-**Q4** : 寻找两个正序数组的中位数     转换为找 **有序** 数组第 K 小的问题。 每次在上下数组找 k/2的位置，比较大小，小的数组左侧都可以被抛弃。
-                                然后找第 k-(j-start+1) 小即可。直到找第1小。即最小值即可。 
+## **Q4** : 寻找两个正序数组的中位数 
 
+1. 转换为找 **有序** 数组第 K 小的问题。 每次在上下数组找 k/2的位置，比较大小，小的数组左侧都可以被抛弃。
+
+2. 然后找第 k-(j-start+1) 小即可。直到找第1小。即最小值即可。 
+
+        public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+                int n = nums1.length;
+                int m = nums2.length;
+                // 当 n + m 为 奇数时 left等于right
+                // 假设 1，2，3，4 left就是2的位置，right就是 3的位置
+                int left = (n + m + 1) / 2;  
+                int right = (n + m + 2) / 2;
+                //将偶数和奇数的情况合并，如果是奇数，会求两次同样的 k 。
+                // 找两个第k小的数即可。
+                return (getKth(nums1, 0, n - 1, nums2, 0, m - 1, left) + getKth(nums1, 0, n - 1, nums2, 0, m - 1, right)) * 0.5;  
+        }
+        /*
+                两个有序数组找第k小， 我们将两个数组并排，想办法找一条线，线左侧(包括线本身)有k个元素，那么线占用的两个数，就有可能是第K大，我们在上下两个数组，取 start_i+k/2 - 1 为线， 那么两个数组的线左侧都有 k/2-1个元素(不包含线)
+                我们比较线上的两个值， 若up < down 那么up以及up左侧的都不可能是第k大。 因为，因为比up小的最多有 k/2-1 + k/2-1 = k-2个
+                但是down数组左侧的元素，还可能大于up以及up右侧的元素。所以仍然可能是第k大，无法排除。
+                这样我们就能排除一个数组的一侧。
+                但后递归。
+        */
+
+
+        private int getKth(int[] nums1, int start1, int end1, int[] nums2, int start2, int end2, int k) {
+                int len1 = end1 - start1 + 1;
+                int len2 = end2 - start2 + 1;
+                //让 len1 的长度小于 len2，这样就能保证如果有数组空了，一定是 len1 
+                if (len1 > len2) return getKth(nums2, start2, end2, nums1, start1, end1, k);
+                if (len1 == 0) return nums2[start2 + k - 1];
+
+                if (k == 1) return Math.min(nums1[start1], nums2[start2]);
+
+                // 若 k/2已经超出边界，那么直接取最后一个。
+                int i = start1 + Math.min(len1, k / 2) - 1;
+                int j = start2 + Math.min(len2, k / 2) - 1;
+
+                if (nums1[i] > nums2[j]) {
+                    return getKth(nums1, start1, end1, nums2, j + 1, end2, k - (j - start2 + 1));
+                }
+                else {
+                    return getKth(nums1, i + 1, end1, nums2, start2, end2, k - (i - start1 + 1));
+                }
+        }
 
 
 **Q15**  : 三数之和    两数之和可以用hashmap来解决。但是三数之和，就不行。 还有一个想法是通过 回溯法，但是去重比较困难，而且比较耗时

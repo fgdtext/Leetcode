@@ -2,7 +2,6 @@ package Q1631;
 
 import java.util.*;
 
-
 /*class
 二分法
 是否存在一条从左上角到右下角的路径，其经过的所有边权的最大值不超过 x？

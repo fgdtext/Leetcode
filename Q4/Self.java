@@ -242,7 +242,8 @@ class ans01{
         int n = nums1.length;
         int m = nums2.length;
         // 当 n + m 为 奇数时 left等于right
-        int left = (n + m + 1) / 2;
+        // 假设 1，2，3，4 left就是2的位置，right就是 3的位置
+        int left = (n + m + 1) / 2;  
         int right = (n + m + 2) / 2;
         //将偶数和奇数的情况合并，如果是奇数，会求两次同样的 k 。
         return (getKth(nums1, 0, n - 1, nums2, 0, m - 1, left) + getKth(nums1, 0, n - 1, nums2, 0, m - 1, right)) * 0.5;  
