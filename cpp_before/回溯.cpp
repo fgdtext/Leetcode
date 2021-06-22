@@ -62,6 +62,7 @@ void perm02(int cur, int n, int *A, int *p)
  */
 //增量法， 就是 begin 构造法。 避免将{1,2} 输出为 {1,2}和{2,1}
 // 这里的 A[cur] 代表集合。cur 自增是为放下一个位置。
+
 void subset01(int n, int *A, int cur)
 {
     for (int i = 0; i < cur; ++i)    //   输出当前子集， 下边尝试 扩大该子集。

@@ -9,6 +9,15 @@
 
 1. 可以使用常规的拓扑排序，但是说实话，不常写，代码量也偏长。  十分推荐 dfs的拓扑排序。
 
+2. 该代码只能判断是否有环，并给出拓扑排序。
+
+                因为我们一下，找不到 类树的根(非树) 所以我们要把每一个结点，都当作最后一个结点。看是否能完成拓扑排序。
+                for (int i = 0; i < numCourses && valid; ++i) {
+                    if (visited[i] == 0) {
+                        dfs(i);
+                    }
+                }
+
                 public void dfs(int u) {
                     visited[u] = 1;  
                     // 标记结点u正在访问，还没完成全部子节点的访问。
@@ -35,10 +44,69 @@
                     // 使用头插法加入 u. 因为加入结点的顺序恰好和正常顺序逆序。
                     }
                 }
-                
+
+
+## 关键路径算法
+
+
+### 先计算完成每个结点的最短时间。
+
+1. 先说数据结构： 是图，不是树， 若A->B,则说明A依赖B。 
+
+2. A -> C  A - > B  B - > C   可以看到这是图，不是树，只是没有环而已。(因为有向，不算环) 我讲这个图称之为 类树 
+
+3. 问题就是 完成 任务 A最短时间。 那么A是唯一没有入度的结点。 结点A就是类树的根。
+
+4. 若我们没办法方便的从输入，直接获取到 类树的根， 那么就要向上边的拓扑排序，对所有结点进行 dfs，但是复杂度就高了。
+
+5. dp记录完成每一个结点，所需要的最短时间。 采用记忆化 递归的方式。 dp[i]:取决于其子结点的dp值。
+
+    main(){
+        ArrayList[] l2r = new ArrayList[len];
+        .....
+        int[] dp = new int[len];
+        Arrays.fill(dp,-1);
+        // 对 root进行 后序的 dp.
+        int ans = dfs(l2r, root,times,dp);
+    }
+    /*
+        该代码和 dfs的拓扑排序，及其相似，都是3态法，标记结点的访问顺序，
+        在拓扑排序中，vis: 0:未访问。 1：开始访问 2：访问完毕。
+        在keyroad中 dp : -1：未访问  -2：开始访问  val：完成该结点的最短时间(恰好也完成了所有子节点的访问)    
+
+        还有一点区别： 拓扑排序中，对子节点访问时，要求子节点是状态 vis=0. 
+        在这里，  A -> C  A - > B  B - > C 这种情况，我们需要通过 dp>0(完成访问，并计时),或者 dp = -1(未访问)
+    */
+    static int dfs(ArrayList<Integer>[] l2r,int curnode,int[] times,int[] dp){
+        if(dp[curnode] > 0) return dp[curnode];
+        dp[curnode] = -2; // 表示开始访问。
+       
+        int maxtime = 0;
+        for(int subnode : l2r[curnode]){
+
+          // 只能访问没有访问过的点
+          if(dp[subnode] > 0){
+                maxtime = Math.max(maxtime, dp[subnode]);
+          } else if(dp[subnode] == -1){
+                int g = dfs(l2r, subnode,times,dp);
+                if(g == -1) return -1;
+                maxtime = Math.max(maxtime, g);
+           }else if(dp[subnode] == -2){
+                // 有循环依赖
+                return -1; // 表示出错
+           }
+        }       
+        return  dp[curnode] = maxtime + times[curnode];
+    }
+
+
+
+       
 ## **Q332** : 重新安排行程  ： 一笔画问题  飞机票构成一幅图。然后找到一条路径使用完所有机票。输出每次到达的位置。从JFK出发
 
 1. euler问题： 通过dfs，把走过的边标记占用，或者直接删除。当一个结点的所有子结点都访问完了，或者说当一个结点的所有边被标记了.那么就输出该点。
+
+2. 该算法其实就是 dfs拓扑排序的 简化版本，这个是，访问一个子结点，删除一个子结点，访问完所有子节点后，添加到anslist.
 
                 public void dfs(String curr) {
                     while (map.containsKey(curr) && map.get(curr).size() > 0) {
@@ -153,10 +221,18 @@
         位置i应该设置的字符。然后对频率--。
 
 
-## **并查集的使用说明**
+## **并查集模板**
 
 1. 百分之80的图论题，可以用并查集来解决。 
 
 2. 并查集是集合问题，题意中一般都会涉及到，划分集合的动作。如牵手，可达，并集，相似，等等。
 
 3. 二维图论中并查集的使用，二维图中一般都是双坐标 (x,y)。 我们一般会做一个坐标映射，getindex(x,y) = index. 用来表示该点在并查集数组中的下标。二维到一维的映射。
+
+            public int find(int x){
+                if(parent[x] != x){
+                    parent[x] = find(parent[x]);
+                }
+                return parent[x];
+            }
+

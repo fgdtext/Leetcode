@@ -54,10 +54,6 @@ class Solution {
         if(nums.length == 2) return nums[0];
         int fast = 0;
         int slow = 0;
-        /*
-            这里应该用 do while  都忘了还有这个东西了。
-
-        */
         slow = nums[slow];
         fast = nums[nums[fast]];
         while(nums[fast] != nums[slow]){
@@ -69,7 +65,6 @@ class Solution {
             slow = nums[slow];
             fast = nums[fast];
         }
-
         return fast;
     }
 }

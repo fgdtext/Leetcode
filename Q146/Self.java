@@ -5,6 +5,7 @@ import java.util.*;
 public class Self {
     
 }
+
  class LRUCache {
     class DLinkedNode {
         int key;

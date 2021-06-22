@@ -3,6 +3,27 @@
  "configurations": [
    {
       "type": "java",
+      "name": "CodeLens (Launch) - Q1",
+      "request": "launch",
+      "mainClass": "test.Q1",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Prim",
+      "request": "launch",
+      "mainClass": "BaseStruct.Prim",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZZZZ.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
       "name": "CodeLens (Launch) - Self",
       "request": "launch",
       "mainClass": "ZZZZZ.Self",

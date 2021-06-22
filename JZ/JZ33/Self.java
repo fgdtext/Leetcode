@@ -4,6 +4,7 @@ import java.lang.Math;
 public class Self {
     
 }
+
  class Solution {
     public int GetUglyNumber_Solution(int n) {
         if(n<=6)

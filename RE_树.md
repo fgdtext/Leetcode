@@ -237,3 +237,46 @@
                     return val;
                 }
                 一个结点的和，来自于 其父节点的和，自身值，右子树的和。
+
+
+## **JZ59** : z字形遍历树
+
+1. 可以使用双端队列，使用一个 flag来转向，使用null值作为一个分界符号。
+
+        //起初队列：  root,null
+        que.addLast(pRoot);
+        que.addLast(null);
+        // 首先从左侧出队。
+        boolean flag = true;
+        while(!que.isEmpty()){
+            TreeNode top;
+            if(flag) top = que.getFirst(); 
+            // 左侧出队
+            else top = que.getLast();      
+            // 右侧出队
+            // 此处只是获取队头，没有出队
+            if(top == null){                
+                // null 永远不出队列
+                flag = !flag;               
+                // 切换方向
+                ans.add(ls);
+                ls = new ArrayList<Integer>();
+                if(que.size() == 1) break; 
+                // 若只有一个 null，说明遍历完了。
+                continue;                
+            }
+            ls.add(top.val);
+            // 左侧出队，则右侧入队。 先左子，再右子。
+            if(flag) {
+                que.removeFirst();
+                if(top.left != null) que.addLast(top.left);
+                if(top.right != null) que.addLast(top.right);
+            } // 相反。
+            else {
+                que.removeLast();
+                if(top.right != null) que.addFirst(top.right);
+                if(top.left != null) que.addFirst(top.left);
+            }            
+            // 构成了双端栈。从一侧出栈，在另一侧入栈。                                    
+        }
+

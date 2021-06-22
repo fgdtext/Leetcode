@@ -1,5 +1,6 @@
 package Q416;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 
@@ -161,7 +162,7 @@ class Solution {
         if(sum % 2 == 1) return false;
         int target = sum / 2;
         boolean[] dp = new boolean[target+1]; // 使得背包恰好装满
-        dp[0] = true;
+        Arrays.fill(dp, true);
         for(int i = 1; i < nums.length; i++){
             for(int j = target; j >= nums[i]; j--){
                 dp[j] = dp[j] | dp[j-nums[i]];

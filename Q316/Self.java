@@ -1,6 +1,6 @@
 package Q316;
 
-import java.util.HashSet;
+import java.util.*;
 
 public class Self {
     
@@ -38,5 +38,42 @@ class Solution {
             }
         }
         return ans.toString();
+    }
+}
+
+class Node{
+    char val;
+    Node left;
+    Node right;
+}
+
+class Solution4 {
+    public String removeDuplicateLetters(String s) {
+
+        // HashMap
+        HashMap<Character,Node> map = new HashMap<Character,Node>();
+        Node emptyH = new Node();
+        Node top = emptyH;
+        for(int i = 0; i < s.length(); i++){
+            if(map.containsKey(s.charAt(i))){
+                del(map.get(s.charAt(i)));
+            }
+            Node cur = new Node();
+            cur.val = s.charAt(i);
+            cur.left = top;
+            top.right = cur;
+            top = top.right;
+        }
+        StringBuilder ans = new StringBuilder();
+        Node cur = emptyH.right;
+        while(cur != null){
+            ans.append(cur.val);
+            cur = cur.right;
+        }  
+        return ans.toString();      
+    }
+    public void del(Node cur){
+        cur.right.left = cur.left;
+        cur.left.right = cur.right;
     }
 }
