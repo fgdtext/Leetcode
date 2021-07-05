@@ -386,3 +386,35 @@
 
 6. E类ip : ip >= 240 && ip <= 255 前缀: 1111 0 : 1111 0000(240) ~ 1111 1111(255)
 
+## 二分找第一个大于等于target。 找第一个小于等于target
+
+        // 若存在返回位置，否则返回 size()
+        public static int erfenl(ArrayList<Integer> arr, int tar){
+            int l = 0, r = arr.size();
+            while(l < r){
+                // 向下取整。
+                int mid = (r-l)/2 + l;
+                if(arr.get(mid) == tar) return mid;
+                else if(arr.get(mid) > tar){
+                    r = mid;
+                }else {
+                    l = mid + 1;
+                }
+            }
+            return l;
+        }
+        // 若存在返回位置，否则返回-1.
+        public static int erfenr(ArrayList<Integer> arr, int tar){
+            int l = -1, r = arr.size()-1;
+            while(l < r){
+                //向上取整
+                int mid = (r-l + 1)/2 + l;
+                if(arr.get(mid) == tar) return mid;
+                else if(arr.get(mid) > tar){
+                    r = mid - 1;
+                }else {
+                    l = mid;
+                }
+            }
+            return l;
+        }

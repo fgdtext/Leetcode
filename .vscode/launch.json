@@ -3,6 +3,48 @@
  "configurations": [
    {
       "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.xiaomi.Q1.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.zijie.Q8.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.zijie.Q7.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.zijie.Q6.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.zijie.Q4.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.zijie.Q1.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
       "name": "CodeLens (Launch) - Q1",
       "request": "launch",
       "mainClass": "test.Q1",
