@@ -5,6 +5,34 @@
       "type": "java",
       "name": "CodeLens (Launch) - Main",
       "request": "launch",
+      "mainClass": "ZZmianshi.kk.Q5.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.kk.Q4.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.kk.Q3.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
+      "mainClass": "ZZmianshi.kk.Q2.Main",
+      "projectName": "leetcode_d735e2be"
+   },
+   {
+      "type": "java",
+      "name": "CodeLens (Launch) - Main",
+      "request": "launch",
       "mainClass": "ZZmianshi.xiaomi.Q1.Main",
       "projectName": "leetcode_d735e2be"
    },

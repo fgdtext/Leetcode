@@ -1,66 +1,37 @@
 package ZZZZZ;
 
-
-
-
 import java.util.*;
+
+
 import java.io.*;
+
 public class Main{
-    public static void main(String[] args)throws IOException{
+
+    public static void main(String[] args) throws IOException{
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(in.readLine());
-        HashMap<String,Integer> map = new HashMap<>();
-        
-        int[][] cyc = {{3,2,1,5},{0,2,4,5},{1,0,3,4},{4,2,0,5},{1,2,3,5},{1,4,3,0}};
-        
-        
+        int[][] arr = new int[n][2];
+        int max = -1;
         for(int i = 0; i < n; i++){
-            char[] s = in.readLine().replace(" ","").toCharArray();
-            int ind = 0;
-            for(; ind < 6; ind++){
-                if(s[ind] == '1'){
-                    break;
-                }
-            }
-            LinkedList<Character> list = new LinkedList<>();
-            int minv = 7;
-            for(int j = 0; j < 4; j++){
-                list.offerLast(s[cyc[ind][j]]);
-                minv = Math.min(minv,s[cyc[ind][j]]-'a');
-            }
-            while(list.peekFirst() != minv+'a'){
-                list.offerLast(list.pollFirst());
-            }
-           
-            StringBuilder keyb = new StringBuilder();
-            for(char c : list){
-                keyb.append(c);
-            }
-            String key = keyb.toString();
-            map.put(key,map.getOrDefault(key,0)+1);
+            String[] s = in.readLine().split(" ");
+            arr[i][0] = Integer.parseInt(s[0]);
+            arr[i][1] = Integer.parseInt(s[1]);
         }
-        ArrayList<Integer> l = new ArrayList<>();
-        for(String e : map.keySet()){
-            l.add(map.get(e));
+        Arrays.sort(arr, (o1,o2)->{
+            if(o1[0] != o2[0]){
+                return o1[0] - o2[0];
+            }
+            return o2[1] - o1[1];
+        });
+        max = arr[0][1];
+        for(int i = 1; i < n; i++){
+            if(arr[i][1] <= max){
+                System.out.println("true");
+                return;
+            }else{
+                max = arr[i][1];
+            }
         }
-        Collections.sort(l);
-        System.out.println(l.size());
-        for(int i = l.size()-1; i >= 0; i--){
-            System.out.print(l.get(i)+" ");
-        }
+        System.out.println("false");
     }
 }
-/*class
-
-10
-2 5 1 3 4 6
-5 4 3 2 1 6
-1 4 6 2 3 5
-1 5 6 3 4 2
-6 4 2 1 5 3
-3 6 4 5 2 1
-1 6 3 4 2 5
-5 1 4 2 6 3
-6 2 3 1 5 4
-5 3 6 1 4 2
-*/
